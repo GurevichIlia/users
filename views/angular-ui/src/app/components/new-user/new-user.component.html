@@ -1,0 +1,156 @@
+
+
+<form [formGroup]="form">
+  <div class="row justify-content-center">
+    <div class="col-12 col-xl-11 mb-4">
+      <button mat-raised-button color="primary" class="mb-3" (click)="back()">Back</button>
+
+      <div class="row">
+        <div class="col-12 mb-3 ">
+          <h1>New user</h1>
+        </div>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Username</mat-label>
+          <input required formControlName="username" matInput required placeholder="Username" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Password</mat-label>
+          <input required formControlName="password" matInput placeholder="Password" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>First name</mat-label>
+          <input required formControlName="first_name" matInput placeholder="First name" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Last name</mat-label>
+          <input required formControlName="last_name" matInput placeholder="Last name" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Email</mat-label>
+          <input required formControlName="email" matInput placeholder="Email" />
+          <mat-error>
+            <span *ngIf="form.get('email').hasError('required')" class="mb-1">
+              {{'This field should not be empty' }}
+            </span>
+            <span *ngIf="form.get('email').hasError('email')" class="mb-1">
+              {{'Email is not valid' }}
+            </span>
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Phone</mat-label>
+          <input required formControlName="phone_number" type="number" matInput placeholder="Phone" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Birthdate</mat-label>
+          <input required formControlName="birthdate" [max]="today" matInput placeholder="birthdate" matInput
+            [matDatepicker]="picker">
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Gender</mat-label>
+          <mat-select required formControlName="gender" matInput placeholder="gender">
+            <mat-option [value]="'male'">Male</mat-option>
+            <mat-option [value]="'female'">Female</mat-option>
+          </mat-select>
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Title</mat-label>
+          <input required formControlName="title" matInput placeholder="Title" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+
+
+      </div>
+    </div>
+    <div class="col-12 col-xl-11">
+      <div formGroupName="location" class="row">
+        <div class="col-12 ">
+          <h4>Location info</h4>
+        </div>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>City</mat-label>
+          <input required formControlName="city" matInput required placeholder="City" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Street</mat-label>
+          <input required formControlName="street" matInput required placeholder="Street" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>State</mat-label>
+          <input required formControlName="state" matInput required placeholder="State" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="col-12 col-xl-6 ">
+          <mat-label>Postcode</mat-label>
+          <input required formControlName="postcode" type="number" matInput placeholder="Postcode" />
+          <mat-error class="mb-1">
+            {{'This field should not be empty' }}
+          </mat-error>
+        </mat-form-field>
+
+
+      </div>
+    </div>
+
+
+
+
+    <div class="col-12 col-md-4 col-lg-4 col-xl-3 mb-4 mt-2">
+
+      <button mat-raised-button color="primary" class="w-100" (click)="saveUser()" type="submit">Submit</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,69 @@
+<div class="mb-3 ">
+  <button mat-raised-button color="primary"><a routerLink="/new-user">Add new </a></button>
+
+
+  <!-- <mat-form-field class="ml-auto">
+    <mat-label>Quantity to show</mat-label>
+    <mat-select [formControl]="quantityShowenUsers">
+      <mat-option [value]="10">10</mat-option>
+      <mat-option [value]="25">25</mat-option>
+      <mat-option [value]="50">50</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+</div>
+
+<!-- <div class="user-list" *ngIf="userList$ | async as users; else loader">
+  <mat-paginator (page)="setPageSize(); changePage()" #paginator [length]="users.length" [pageSize]="pageSize"
+    [pageSizeOptions]="[10, 25, 50]">
+  </mat-paginator>
+
+  <mat-card class="w-100 mb-2" *ngFor="let user of users | slice : startPosition : endPosition">
+    <app-user-card (click)="showUserDetails(user.id)" class="w-100 " [user]="user"></app-user-card>
+  </mat-card> -->
+
+
+
+
+<!-- </div> -->
+<div class="mat-elevation-z8 mb-5">
+  <mat-paginator #paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+
+  <div class="table-box" *ngIf="dataSource$ | async as dataSource; else loader">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="picture">
+        <th mat-header-cell *matHeaderCellDef>Picture</th>
+        <td mat-cell *matCellDef="let user">
+          <img width="100" [src]="'http://localhost:4200/pictures/' + user.picture" alt="">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Username </th>
+        <td mat-cell *matCellDef="let user">
+          {{user.username}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef> First name </th>
+        <td mat-cell *matCellDef="let user"> {{user.first_name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> Last name </th>
+        <td mat-cell *matCellDef="let user"> {{user.last_name}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr class="pointer" (click)="showUserDetails(row.id)" mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>
+  </div>
+
+
+</div>
+
+<ng-template #loader>
+  <mat-spinner class="mx-auto"></mat-spinner>
+</ng-template>
